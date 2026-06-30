@@ -1,14 +1,16 @@
-FROM alpine:latest
+FROM debian:stable
 
-RUN apk update && apk add --no-cache \
-    alpine-desktop \
+RUN apt update && apt install -y \
     xfce4 \
     x11vnc \
     xvfb \
     novnc \
     websockify \
     firefox-esr \
-    bash
+    curl \
+    wget \
+    git \
+    nano
 
 RUN mkdir -p /root/.vnc && \
     x11vnc -storepasswd 1234 /root/.vnc/passwd
